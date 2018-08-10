@@ -6,8 +6,12 @@ import gmshop.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+
+import javax.validation.Valid;
 
 @Controller
 public class customerController {
@@ -28,13 +32,20 @@ public class customerController {
     }
 
     @RequestMapping("/saveCustomer")
-    public String saveCutomer(@ModelAttribute("customer") Customer cutomer)
+    public String saveCutomer(@Valid @ModelAttribute("customer") Customer cutomer, BindingResult result)
     {
+        if(result.hasErrors())
+        {
+            return "customerRegister";
+        }
+    else {
+            System.out.println("save customer" + cutomer);
+            customerService.saveCustomer(cutomer);
 
-        System.out.println("save customer"+cutomer);
-        customerService.saveCustomer(cutomer);
+            return "redirect:/";
+        }
 
-
-return "customerRegister";
     }
+
+
 }

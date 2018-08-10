@@ -1,7 +1,10 @@
 package gmshop.model;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @Entity
 
@@ -10,12 +13,13 @@ public class Customer {
 
 @GeneratedValue(strategy = GenerationType.AUTO)
 int customer_id;
-
+@NotEmpty(message = "insert last name")
+@Size(min = 3, max = 15)
 @Column(name = "customer_lastName")
 String lastName;
-
+@Size(min = 3, max = 15)
 @Column(name="customer_firstName")
-        @NotNull
+        @NotEmpty(message = "insert firstName")
 String firstName;
 
         public int getCustomer_id() {
@@ -34,7 +38,7 @@ String firstName;
                 this.lastName = lastName;
         }
 
-        @NotNull
+
         public String getFirstName() {
                 return firstName;
         }

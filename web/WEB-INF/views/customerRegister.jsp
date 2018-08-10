@@ -15,11 +15,14 @@
 
         <label for="firstName">First Name:</label>
         <form:input path="firstName" class="form-control" id="firstName"></form:input>
+
+        <form:errors path="firstName" cssClass="alert-danger">error</form:errors>
     </div>
 
     <div class="form-group">
          <label for="lastName">Last Name:</label>
         <form:input path="lastName" class="form-control" id="lastName"></form:input>
+        <form:errors path="lastName" cssClass="alert-danger" />
     </div>
 
     <div class="form-group">
