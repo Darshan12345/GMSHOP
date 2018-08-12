@@ -12,6 +12,7 @@ import java.util.List;
 
 
 @Repository
+@Transactional
 public class customerDAOImple implements customerDAO {
 
     @Autowired
@@ -21,6 +22,7 @@ public class customerDAOImple implements customerDAO {
         Session session=sessionFactory.getCurrentSession();
         Query<Customer> query=  session.createQuery("from Customer", Customer.class);
         List<Customer> list=query.getResultList();
+        session.flush();
         return list;
     }
 
@@ -28,19 +30,23 @@ public class customerDAOImple implements customerDAO {
 
         Session session=sessionFactory.getCurrentSession();
 
-        session.saveOrUpdate(customer);
+        session.save(customer);
+
+        session.flush();
     }
 
     public void deleteCustomer(int id) {
 
         Session session=sessionFactory.getCurrentSession();
 
-        Query query=session.createQuery("delete from Customer where id=:customerId");
+        Query query=session.createQuery("delete from Customer where customer_id=:customerId");
         query.setParameter("customerId",id);
         query.executeUpdate();
+        session.flush();
     }
 
     public Customer getCustomer(int id) {
+
         return sessionFactory.getCurrentSession().get(Customer.class,id);
     }
 }

@@ -16,7 +16,7 @@
         <label for="firstName">First Name:</label>
         <form:input path="firstName" class="form-control" id="firstName"></form:input>
 
-        <form:errors path="firstName" cssClass="alert-danger">error</form:errors>
+        <form:errors path="firstName" cssClass="alert-danger"></form:errors>
     </div>
 
     <div class="form-group">

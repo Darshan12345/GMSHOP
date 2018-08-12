@@ -3,11 +3,11 @@ package gmshop.model;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
-import javax.validation.constraints.NotNull;
+
 import javax.validation.constraints.Size;
 
 @Entity
-
+@Table(name = "customer")
 public class Customer {
 @Id
 
@@ -43,7 +43,7 @@ String firstName;
                 return firstName;
         }
 
-        public void setFirstName(@NotNull String firstName) {
+        public void setFirstName( String firstName) {
                 this.firstName = firstName;
         }
 
@@ -55,7 +55,7 @@ String firstName;
                 this.contact = contact;
         }
 
-        @Column(name="customer_constact")
+        @Column(name="customer_contact")
 long contact;
 
 

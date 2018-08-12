@@ -10,6 +10,7 @@ import org.springframework.validation.BindingResult;
 
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import javax.validation.Valid;
 
@@ -31,7 +32,7 @@ public class customerController {
 
     }
 
-    @RequestMapping("/saveCustomer")
+    @RequestMapping(value = "/saveCustomer", method = RequestMethod.POST)
     public String saveCutomer(@Valid @ModelAttribute("customer") Customer cutomer, BindingResult result)
     {
         if(result.hasErrors())
@@ -39,7 +40,7 @@ public class customerController {
             return "customerRegister";
         }
     else {
-            System.out.println("save customer" + cutomer);
+           // System.out.println("save customer" + cutomer);
             customerService.saveCustomer(cutomer);
 
             return "redirect:/";
