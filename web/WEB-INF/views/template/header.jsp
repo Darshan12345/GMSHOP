@@ -30,8 +30,14 @@
 
     <!-- Main CSS -->
     <link href="<c:url value="/resources/css/main.css" />" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 
-
+    <script type="text/javascript">
+        $(function () {
+            $('#datetimepicker1').datetimepicker();
+        });
+    </script>
 
 </head>
 <!-- NAVBAR
@@ -58,6 +64,7 @@
                         <li><a href="<c:url value="/supplier/addSupplier" />">Supplier</a></li>
 
                         <li><a href="<c:url value="/registerCustomer" />">Customer</a></li>
+                        <li><a href="<c:url value="/employee/addEmployee"/>">Employee</a></li>
                         <li><a href="contact">Contact</a></li>
                     </ul>
                     <ul class="nav navbar-nav pull-right">
